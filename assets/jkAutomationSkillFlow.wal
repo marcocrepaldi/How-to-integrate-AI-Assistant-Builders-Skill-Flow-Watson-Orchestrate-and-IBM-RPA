@@ -1,0 +1,43 @@
+
+	z·˜ícC…¤¼ mD°defVar --name job_title --type String --parameter 
+defVar --name company --type String --parameter 
+defVar --name email --type String --parameter 
+defVar --name phone --type String --parameter 
+defVar --name client_address --type String --parameter 
+defVar --name client_city --type String --parameter 
+defVar --name client_state --type String --parameter 
+defVar --name client_zipcode --type String --parameter 
+defVar --name area_of_interest --type String --parameter 
+defVar --name followup_requested --type String --value "Yes\r\n"
+defVar --name desktop --type String
+defVar --name firstName --type String --parameter 
+defVar --name lastName --type String --parameter 
+webStart --name web01 --type "Chrome" --userprofilepreferences "AutomationOptimized" --downloadpath "C:\\Users\\AldoJustiniano\\AppData\\Local\\IBM Robotic Process Automation\\downloads" --incognito 
+webNavigate --url "https://jk-automation-container.12kvw4kay3ug.us-south.codeengine.appdomain.cloud/"
+goSub --label Login_to_Site
+webNavigate --url "https://jk-automation-container.12kvw4kay3ug.us-south.codeengine.appdomain.cloud/#/leads"
+goSub --label Fill_Lead_Information
+webClose --name web01
+beginSub --name Fill_Lead_Information
+webSet --value "${firstName}" --selector "Name" --name firstName --simulatehuman 
+webSet --value "${lastName}" --selector "Name" --name "lastName " --simulatehuman 
+webSet --value "${email}" --selector "Name" --name email --simulatehuman 
+webSet --value "${job_title}" --selector "Name" --name jobTitle --simulatehuman 
+webSet --value "${company}" --selector "Name" --name company --simulatehuman 
+webSet --value "${phone}" --selector "Name" --name phone --simulatehuman 
+webSet --value "${client_address}" --selector "Name" --name companyAddress --simulatehuman 
+webSet --value "${client_city}" --selector "Name" --name companyCity --simulatehuman 
+webSet --value "${client_state}" --selector "Name" --name companyState --simulatehuman 
+webSet --value "${client_zipcode}" --selector "Name" --name companyZipcode --simulatehuman 
+webSet --value "${area_of_interest}" --selector "Name" --name interest --simulatehuman 
+if --left "${followup_requested}" --operator "Equal_To" --right Yes
+	webClick --selector "Name" --name followup
+endIf
+webClick --selector "CssSelector" --css "body > div > div.col-md-10 > div > div.container-fluid.ng-scope > div:nth-child(1) > div > form > div:nth-child(4) > div:nth-child(3) > div > input"
+endSub
+beginSub --name Login_to_Site
+webWaitElement --selector "CssSelector" --css "body > div:nth-child(4) > form > div:nth-child(1) > input" --simulatehuman  --timeout "00:00:20"
+webSet --value username --selector "CssSelector" --css "body > div:nth-child(4) > form > div:nth-child(1) > input"
+webSet --value password10 --selector "CssSelector" --css "body > div:nth-child(4) > form > div.form-group > input"
+webClick --selector "CssSelector" --css "body > div:nth-child(4) > form > div:nth-child(3) > input"
+endSub"	Cô1:a²L³º5,4;5*	23.0.15.0
